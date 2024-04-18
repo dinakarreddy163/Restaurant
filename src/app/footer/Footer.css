@@ -1,0 +1,7 @@
+.footer-menu {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #f0f0f0; /* Example background color */
+    padding: 10px;
+  }
