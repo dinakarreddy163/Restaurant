@@ -1,0 +1,11 @@
+.p-grid {
+    overflow: auto;
+    width: 23rem;
+    height: 100%;
+}
+
+.p-grid-cart {
+    overflow: auto;
+    width: 67rem;
+    height: 100%;   
+}
