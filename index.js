@@ -2,12 +2,13 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import CustomDemo from "./src/app/header/Header"
 import Footer from "./src/app/footer/Footer"
-import SizeDemo from "./src/app/take-order/Order"
+import SizeDemo from "./src/app/take-order/Waiter"
 import 'primereact/resources/themes/saga-blue/theme.css';
 import 'primereact/resources/primereact.min.css';
 import 'primeicons/primeicons.css';
 import { Outlet, RouterProvider, createBrowserRouter,use, useNavigate } from "react-router-dom";
 import LoginComponent, {login} from "./src/app/login/Login";
+import CurrentOrders from "./src/app/get-order/CurrentOrders";
 // import 'primeflex/primeflex.css';
 const Newsletter = React.lazy(() => import("./src/app/login/Login"));
 
@@ -34,6 +35,10 @@ let router = createBrowserRouter([
             {
             path:'/',
             element:<SizeDemo />
+            },
+            {
+                path:'/Orders',
+                element:<CurrentOrders />
             }
 
         ]

@@ -2,11 +2,10 @@
   "name": "restaurant",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "parcel index.html",
-    "build": "rm -rf .parcel-cache && parcel build",
+    "build": "npx parcel build index.html",
     "deploy": "gh-pages -d parcel build"
   },
   "author": "",
