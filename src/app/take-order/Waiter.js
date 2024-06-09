@@ -6,13 +6,15 @@ import Cart from './Cart';
 import { json } from 'react-router-dom';
 import Footer from "../footer/Footer"
 import './Order.css'
+import { useSelector } from 'react-redux';
 
 
-export default function SizeDemo() {
+export default function Waiter() {
     console.log("hit")
     const [cartItems, setCartItems] = useState([]);
     const [menuItems, setMenuItems] = useState([]);
     let cartList = [];
+
     const addToOrder = (item) => {
         console.log(item);
         let listItem = [];

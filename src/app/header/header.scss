@@ -1,0 +1,32 @@
+.container {
+    background: #0B5896;
+    width: 100%;
+    padding: 0rem 1.5rem;
+    margin: 0 auto;
+    color: #FFFFFF;
+
+}
+.nav {
+    display: flex;
+    justify-content: space-between;
+}
+
+.logoName {
+    font-size: 2rem;
+}
+
+.list {
+
+    display: flex;
+    list-style-type: none;
+
+    li {
+        margin: 0rem 0.4rem;
+        padding: 0.3rem; 
+        color:#FFFFFF; 
+        text-decoration:none; 
+        cursor:pointer; 
+    }
+    a {text-decoration: none; }
+
+}
