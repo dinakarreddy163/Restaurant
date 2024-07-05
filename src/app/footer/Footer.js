@@ -14,7 +14,7 @@ const Footer = ({ menuItem, orderItems }) => {
     menuItems();
   }, []);
   const menuItems = () => {
-    fetch("http://localhost:3000/menuTypes").then(res => {
+    fetch("http://25.17.214.78:81/menuTypes").then(res => {
       res.json().then(json => {
 
         const items = [
@@ -22,19 +22,16 @@ const Footer = ({ menuItem, orderItems }) => {
         json.forEach(e => {
           items.push({
             label: e.type, icon: 'pi pi-fw pi-utensils', command: (item) => {
-              console.log(item);
               menuItem(item.item.label);
             }
           })
         });
-        console.log(json);
         setMenuItemsList(items);
       })
     })
   }
 
   const submit = () => {
-    console.log(orderItems);
     let orderedItems = [];
     orderItems.forEach(e => {
       orderedItems.push({
@@ -51,7 +48,7 @@ const Footer = ({ menuItem, orderItems }) => {
       "order_status": "Cooking pending",
       "orderItems": orderedItems
     }
-    fetch("http://localhost:3000/order", {
+    fetch("http://25.17.214.78:81/order", {
       method: "POST", // *GET, POST, PUT, DELETE, etc.
       // mode: "cors", // no-cors, *cors, same-origin
       // cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
@@ -65,7 +62,6 @@ const Footer = ({ menuItem, orderItems }) => {
       body: JSON.stringify(sendOrder), // body data type must match "Content-Type" header
     }).then(res => {
       res.json().then(json => {
-        console.log(json);
         toast.current.show({ severity: 'info', summary: 'Info', detail: json.message });
         window.location.reload();
 

@@ -1,6 +1,8 @@
 import { Dialog } from 'primereact/dialog';
 import { useEffect, useState } from 'react';
 
+import { DataTable } from 'primereact/datatable';
+import { Column } from 'primereact/column';
 const Employee = () => {
     const [visible, setVisible] = useState(false);
     const [employee, setEmployee] = useState({
@@ -11,6 +13,17 @@ const Employee = () => {
         type: '',
         password: ''
     });
+
+    const [employeeList, setEmployeeList] = useState([{
+        "emp_id": "",
+        "username": "",
+        "password": "",
+        "full_name": "",
+        "email": "",
+        "phone_number": "",
+        "type": ""
+    }]);
+
     
     const loginFormData = (e) => {
         const { value, name } = e.target
@@ -19,12 +32,10 @@ const Employee = () => {
             [name]: value
         }
         setEmployee(formVal);
-        console.log(employee)
     }
 
 
     const submit = (e) => {
-        console.log(e);
         employeeAdd();
     }
 
@@ -33,15 +44,15 @@ const Employee = () => {
     }, [])
 
     const getEmployee = () => {
-       fetch('http://localhost:3000/employee').then(res => {
-            res.json(json => {
-                console.log(json);
-            })
+       fetch('http://25.17.214.78:81/employee').then((res) => {
+        res.json().then((json) => {
+            setEmployeeList(json);
         })
+    })
     }
 
     const employeeAdd = async () => {
-        await fetch("http://localhost:3000/employee", {
+        await fetch("http://25.17.214.78:81/employee", {
             method: "POST", // *GET, POST, PUT, DELETE, etc.
             // mode: "cors", // no-cors, *cors, same-origin
             // cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
@@ -115,8 +126,16 @@ const Employee = () => {
                         </form>
 
                     </Dialog>
+
                 </div>
 
+                <DataTable value={employeeList} selectionMode="single" dataKey="item_id" tableStyle={{ minWidth: '50rem' }}>
+                    <Column field="emp_id" header="Emp Id" ></Column>
+                    <Column field="full_name" header="Emp Name"></Column>
+                    <Column field="username" header="User Name"></Column>
+                    <Column field="phone_number" header="Phone"></Column>
+                    <Column field="type" header="Type"></Column>
+                </DataTable>
             </div>
         </div>
     )

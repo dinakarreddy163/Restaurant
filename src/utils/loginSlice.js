@@ -1,23 +1,28 @@
-import { createSlice } from "@reduxjs/toolkit"
-
+import { createSlice } from "@reduxjs/toolkit";
 
 const LoginSlice = createSlice({
-    name:'login',
-    initialState:{
-        loginDetails:[]
+    name: 'login',
+    initialState: {
+        loginDetails: []
     },
-    reducers:{
-        login: (state, action) =>{
+    reducers: {
+        setLoginDetails: (state, action) => {
             state.loginDetails.push(action.payload);
         },
-        logout: (state, action) => {
-            state.loginDetails.pop();
+        clearLoginDetails: (state) => {
+            state.loginDetails = [];
         }
     },
-    selectors:{
+});
 
-    }
-})
+export const { setLoginDetails, clearLoginDetails } = LoginSlice.actions;
 
-export const {login,logout} = LoginSlice.actions;
+export const login = (loginDetails) => (dispatch) => {
+    dispatch(setLoginDetails(loginDetails));
+};
+
+export const logout = () => (dispatch) => {
+    dispatch(clearLoginDetails());
+};
+
 export default LoginSlice.reducer;

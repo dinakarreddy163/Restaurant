@@ -5,7 +5,6 @@ import { Button } from 'primereact/button';
 import { useState } from 'react';
 
 const Items = ({ item, addToOrder,addQty}) => {
-  console.log(item);
   
   const [quantity, setQuantity] = useState(0);
   const [addCart, setAddCart] = useState(false);

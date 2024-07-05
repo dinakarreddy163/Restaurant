@@ -1,7 +1,6 @@
 import { Card } from 'primereact/card';
 import './Order.css'
 const Cart = ({items}) =>{
-    // console.log(data)
         const renderCards = () => {
             return items.map((item) => (
               <div key={item.item_id} className="p-col-12 p-md-4">

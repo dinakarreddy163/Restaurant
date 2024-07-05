@@ -10,16 +10,13 @@ import { useSelector } from 'react-redux';
 
 
 export default function Waiter() {
-    console.log("hit")
     const [cartItems, setCartItems] = useState([]);
     const [menuItems, setMenuItems] = useState([]);
     let cartList = [];
-
+    const loginDetails = useSelector((state) => state.login.loginDetails);
     const addToOrder = (item) => {
-        console.log(item);
         let listItem = [];
         listItem.push(item);
-        console.log(cartItems);
         listItem = [...listItem, ...cartItems]
         setCartItems(listItem);
     }
@@ -29,25 +26,20 @@ export default function Waiter() {
     }, []);
 
     const getItems = async () => {
-        await fetch('http://localhost:3000/menuitems').then((res) => {
-            console.log(res)
+        await fetch('http://25.17.214.78:81/menuitems').then((res) => {
             res.json().then((json) => {
                 cartList = json;
                 setMenuItems(json);
-                console.log(json)
             })
         })
     }
     const getMenu = (data) => {
         // setMenuVal(data);
         // await getItems();
-        console.log("menu")
-        console.log(cartList)
         let menuItem = cartList.filter(e=>e.type === data);
         setMenuItems(menuItem)
     }
     const addQty = (qty) =>{
-        console.log(qty);
        let qtyItems = cartItems.map(item=>{
             if(item.item_id === qty.item.item_id) {
                 return {...item,qty:qty.qty}
@@ -55,8 +47,7 @@ export default function Waiter() {
             }
             return item
         });
-        setCartItems(qtyItems)
-        console.log(qtyItems);
+        setCartItems(qtyItems);
     }
     return (<>
         <Splitter style={{ height: '81.5%' }}>

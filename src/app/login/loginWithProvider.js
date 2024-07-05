@@ -9,7 +9,6 @@ import LoginComponent from "./Login";
 import AppStore from "../../utils/appStore";
 
 const LoginWithProvider= () => {
-    console.log("dhj");
     return (
      <Provider store={AppStore}>
         <LoginComponent />

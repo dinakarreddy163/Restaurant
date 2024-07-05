@@ -15,7 +15,7 @@ const CurrentOrders = () => {
         getOrders();
     }, [])
     const getOrders = () => {
-        const orders = fetch("http://localhost:3000/getOrders");
+        const orders = fetch("http://25.17.214.78:81/getOrders");
         orders.then(res => {
             res.json().then((json) => {
                 setOrders(json);
